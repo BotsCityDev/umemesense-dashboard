@@ -97,7 +97,7 @@ export default async function LandingPage() {
                     fontFamily: 'DM Sans, sans-serif'
                   }}
                 >
-                  Start Free Trial
+                  Start Today
                 </Link>
                 <Link 
                   href="/login"
@@ -440,7 +440,7 @@ export default async function LandingPage() {
                 fontFamily: 'DM Sans, sans-serif'
               }}
             >
-              Start Free Trial
+              Start Today
             </Link>
             <a 
               href="mailto:contact@umemesense.com"

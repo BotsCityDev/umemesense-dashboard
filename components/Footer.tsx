@@ -120,11 +120,11 @@ export default function Footer() {
               COMPANY
             </h3>
             <ul className="space-y-3">
-              <li><FooterLink href="/about">About Us</FooterLink></li>
+              <li><FooterLink href="https://www.umemesense.com/about">About Us</FooterLink></li>
               <li><FooterLink href="/careers">Careers</FooterLink></li>
-              <li><FooterLink href="/blog">Blog</FooterLink></li>
+              <li><FooterLink href="https://www.umemesense.com/blog">Blog</FooterLink></li>
               <li><FooterLink href="/press">Press Kit</FooterLink></li>
-              <li><FooterLink href="/contact">Contact</FooterLink></li>
+              <li><FooterLink href="https://www.umemesense.com/contact">Contact</FooterLink></li>
             </ul>
           </div>
 
