@@ -223,8 +223,8 @@ export default async function ProfilePage() {
               {/* Edit Form Component */}
               <ProfileEditForm 
                 initialData={{
-                  name: data.name,
-                  email: data.email,
+                  name: data.name ?? '',
+                  email: data.email ?? '',
                   username: data.name?.toLowerCase().replace(/\s+/g, '') || 'username',
                   phone: '+254 700 000 000',
                   location: 'Nairobi, Kenya'

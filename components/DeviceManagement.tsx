@@ -30,12 +30,12 @@ const BRAND_COLORS = {
 };
 
 interface Device {
-  id: number;
+  id: string; // NOTE: Changed from number to string to match Prisma's `cuid()`
   name: string;
   technology: string;
   system_size_kw: number;
   location_lat: number;
-  location_lng: number;
+  location_lon: number; // 💡 FIX: Changed from location_lng to location_lon
   installation_date?: string;
   last_reading?: string;
   status?: 'active' | 'inactive' | 'maintenance';
@@ -59,12 +59,16 @@ const getStatusColor = (status?: string) => {
 };
 
 export default function DeviceManagement({ devices: initialDevices }: { devices: Device[] }) {
-  const [devices, setDevices] = useState(initialDevices.map(d => ({
-    ...d,
-    status: 'active' as const,
-    installation_date: '2024-06-15',
-    last_reading: new Date().toISOString()
-  })));
+  const initialDevicesWithStatus = initialDevices.map(d => ({
+        ...d,
+        // Default the status to 'active' but TypeScript knows it *can* be the others
+        status: 'active' as ('active' | 'inactive' | 'maintenance'), 
+        installation_date: '2024-06-15', // Default value
+        last_reading: new Date().toISOString() // Default value
+    }));
+  const [devices, setDevices] = useState<typeof initialDevicesWithStatus>(initialDevicesWithStatus);
+
+
   const [searchQuery, setSearchQuery] = useState('');
   const [filterTechnology, setFilterTechnology] = useState<string>('all');
   const [showAddModal, setShowAddModal] = useState(false);
