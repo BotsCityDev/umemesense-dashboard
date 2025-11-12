@@ -47,15 +47,15 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    // Inject user ID into JWT and Session for use in data fetching
+    // This callback is vital for injecting the userId into the session
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id;
+        token.id = user.id; // token.sub usually holds the User ID
       }
       return token;
     },
     async session({ session, token }) {
-      if (token.id) {
+      if (token.id && session.user) { // 💡 FIX: Check if session.user exists
         session.user.id = token.id as string;
       }
       return session;
